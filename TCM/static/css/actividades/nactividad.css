@@ -1,0 +1,55 @@
+.formulario{
+    width: 900px;
+    background-color: rgba(0, 0, 0, 0.685);
+    color: white;
+    border-radius: 15px;
+    margin: auto;
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+}
+.contenido{
+    height: 100%;
+    bottom: 0;
+}
+.titulof{
+    padding: 20px;
+    text-align: center;
+}
+.subtitulo{
+    text-align: center;
+    margin-bottom: 40px;
+}
+.inputs input, .input select{
+    width: 700px;
+    outline: none;
+    border: 2px solid rgba(56, 56, 56, 0);
+    padding: 5px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+.inputs table{
+    margin: auto;
+}
+.botones button{
+    padding: 10px;
+    width: 120px;
+    font-size: 18px;
+    font-weight: 500;
+    background-color: rgb(36, 36, 36);
+    color: white;
+    border-radius: 10px;
+    border: 0px solid;
+    box-shadow: 0 0 7px rgb(0, 0, 0);
+    margin-left: 50px;
+    margin-right: 50px;
+    transition: 0.2s;
+}
+.botones button:hover{
+    background-color: rgb(255, 255, 255);
+    transition: 0.2s;
+    color: rgb(0, 0, 0);
+}
+.botones{
+    text-align: center;
+    margin-top: 10px;
+    padding: 35px;
+}

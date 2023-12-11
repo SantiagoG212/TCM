@@ -1,0 +1,156 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/plantilla_admin.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <title>TCM</title>
+    <link rel="shortcut icon" href="{% static 'image/logo1.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/inicio.css' %}">
+    <title>Informe de Salario</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready( function () {
+            $('#activities-table').DataTable();
+        } );
+    </script>
+</head>
+<body>
+    <style>
+        body{
+            background-image: url("{% static 'image/fondo1.png' %}");
+        }
+    </style>
+    <nav class="nav">
+        <div class="logo">
+            <img src="{% static 'image/logo1.png' %}" alt="" width="80px">
+        </div>
+        <div class="titulo">
+            <p><a href="{% url 'empleado' %}">TCM</a></p>
+        </div>
+    </nav>
+    <div style="height: 150px; overflow: hidden;" ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M-1.41,31.09 C202.31,56.75 329.85,-38.95 500.00,49.98 L500.00,0.00 L0.00,0.00 Z" style="stroke: none; fill: #000000;"></path></svg></div>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+        
+         h2, h3 {
+            color: #000000; /* Cambiado a negro */
+        }
+
+        h1{
+            color: white;
+        }
+        
+        /* Estilos para la tabla */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            border-radius: 10px; /* Contorno redondeado */
+        }
+        
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #000000;
+            color: #ffffff;
+            padding-top: 12px; /* Ajusta el espacio entre el texto y el borde superior */
+        }
+        
+        /* Estilos específicos para la barra negra */
+        .table-title {
+            background-color: #000000;
+            color: #ffffff;
+            padding: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        /* Estilos para el pie de página */
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+        }
+        
+        /* Estilos específicos para la información del usuario y el salario */
+        .user-info {
+            color: #000000; /* Cambiado a negro */
+            font-size: 18px; /* Tamaño de letra más grande */
+        }
+        
+        .total-salary {
+            color: #000000; /* Cambiado a negro */
+            font-size: 20px; /* Tamaño de letra más grande */
+            font-weight: bold; /* Texto en negrita */
+        }
+    </style>
+    {% load render_table from django_tables2 %}  <!-- Agrega esta línea al principio -->
+
+ {% block content %}
+    {% if grupo == 'Empleados' or user.is_staff %}
+        <div class="container">
+            <div class="table-title">
+                <h1>Informe de Salario</h1>
+            </div>
+            <h2>Detalles de las actividades realizadas durante el mes</h2>
+    
+            <!-- Mostrar el nombre y apellido del usuario -->
+            <p class="user-info">Nombre del empleado: {{ user.first_name }} {{ user.last_name }}</p>
+            <h3 class="total-salary">Total de Salario Mensual Estimado: {{ total_production_monthly }}</h3>
+    
+            {% render_table table "django_tables2/bootstrap4.html" id="activities-table" %}
+    
+            <!-- Mostrar el total de producción mensual como salario -->
+        </div>
+    {% else %}
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+            <div class="col-md-6 text-center">
+                <h3>Bienvenido</h3>
+                <p>Por favor, inicia sesión como empleado.</p>
+                <a href="{% url 'login' %}" class="btn btn-primary">Ir al Inicio de Sesión</a>
+            </div>
+            </div>
+        </div>
+    {% endif %}
+ {% endblock %}
+
+
+    <div class="wavy" style="height: 150px; overflow: hidden;" ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M-0.27,93.27 C143.62,233.39 358.07,35.05 504.79,98.20 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: #000000;"></path></svg></div>
+    <div class="footer">
+        <div class="copy">
+        <p>Derechos reservados 2023-2024 &copy;</p>
+        </div>
+        <div class="contacto">
+            <h2>¿Deseas comunicarte con nosotros?, ¡Contactanos!</h2>
+            <div class="contactos">
+                <p>Direccion: KR 104 A BIS NO 61 A SUR - 49</p>
+                <p>Telefono: 315 - 296 - 0105</p>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>

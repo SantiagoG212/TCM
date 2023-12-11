@@ -1,0 +1,215 @@
+.options{
+    margin-right: 25px;
+    margin-top: 15px;
+    float: left;
+    margin-left: 230px;
+}
+.options a, .options button{
+    font-family: 'Roboto Condensed', sans-serif;
+    color: white;
+    font-size: 20px;
+    margin-left: 15px;
+    margin-right: 15px;
+    padding: 15px;
+    transition: 0.2s;
+    background-color: black;
+    text-decoration-line: underline;
+    border: 0px;
+}
+.options a:hover, .options button:hover{
+    background-color: rgb(46, 46, 46);
+    transition: 0.2s;
+    border-radius: 5px;
+}
+.logout{
+    float: right;
+    margin-top: 30px;
+    margin-left: 750px;
+    display:block;
+}
+.logout a{
+    font-family: 'Roboto Condensed', sans-serif;
+    background-color: aliceblue;
+    padding: 10px;
+    border-radius: 45px;
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+    transition: 0.2s;
+}
+.logout a:hover{
+    font-family: 'Roboto Condensed', sans-serif;
+    background-color: rgb(59, 59, 59);
+    padding: 10px;
+    border-radius: 45px;
+    font-size: 20px;
+    text-decoration: underline; 
+    color: white;
+    transition: 0.2s;
+}
+.admin h2, #servicios h2, #ganancias h2, #produccion h2{
+    font-size: 45px;
+}
+.admin p, #servicios p, #ganancias p, #produccion p{
+    font-size: 25px;
+}
+#servicios, #ganancias, #produccion{
+    display: none;
+}
+.tabla2 td{
+    justify-content: center;
+}
+.tabla table, .tabla2 table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabla th, .tabla td, .tabla2 th, .tabla2 td{
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+.tabla th, .tabla th{
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+.tabla tr:hover, .tabla2 tr:hover{
+    background-color: #c5c5c5;
+    border-color: black;
+}
+
+.tabla tr td:first-child, .tabla2 tr td:first-child{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #333;
+}
+.tabla, .tabla2{
+    overflow-x: auto;
+    max-width: 100%;
+    margin-top: 20px;
+}
+.tabla td img {
+    width: 34px; 
+    height: 34px;
+    margin-right: 5px;
+}
+h2.borde, h2.borde2{
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 45px;
+    color: transparent;
+    text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+    position: relative;
+    z-index: 1;
+}
+.contenedor2{
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    margin: 20px auto;
+    width: 80%;
+    max-width: 800px;
+    display: none;
+}
+.imagen2{
+    float: right;
+}
+
+@media (max-width: 700px) {
+
+    .options {
+        margin-left: 10px; /* Cambiar el margen izquierdo */
+        margin-right: 10px; /* Cambiar el margen derecho */
+        float: none; /* Eliminar la propiedad float */
+    }
+
+    .options a, .options button {
+        font-size: 18px; /* Cambiar el tamaño de fuente */
+        padding: 10px; /* Cambiar el relleno */
+    }
+
+    .logout {
+        margin-top: 15px; /* Cambiar el margen superior */
+        margin-left: 10px; /* Cambiar el margen izquierdo */
+    }
+
+    .logout a {
+        font-size: 16px; /* Cambiar el tamaño de fuente */
+        padding: 8px; /* Cambiar el relleno */
+    }
+
+    .admin h2, #servicios h2, #ganancias h2, #produccion h2 {
+        font-size: 30px; /* Cambiar el tamaño de fuente */
+    }
+
+    .admin p, #servicios p, #ganancias p, #produccion p {
+        font-size: 18px; /* Cambiar el tamaño de fuente */
+    }
+
+    /* Agrega aquí más estilos específicos para pantallas de 700px o menos según tus necesidades */
+}
+
+.tabla2 td{
+    justify-content: center;
+}
+.tabla table, .tabla2 table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabla th, .tabla td, .tabla2 th, .tabla2 td{
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+.tabla th, .tabla th{
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+.tabla tr:hover, .tabla2 tr:hover{
+    background-color: #c5c5c5;
+    border-color: black;
+    font-weight: bolder;
+}
+
+.tabla tr td:first-child, .tabla2 tr td{
+    align-items: center;
+    color: #000000;
+    font-weight: 500;
+}
+.tabla2{
+    overflow-x: auto;
+    max-width: 100%;
+    margin-top: 20px;
+}
+h2.borde2{
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 45px;
+    color: black;
+    font-weight: bold;
+}
+#procesos2{
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    margin: 20px auto;
+}
+#edit, #eliminar{
+    width: 100px;
+}
+#paginator{
+    background-color: #c5c5c500;
+}
+

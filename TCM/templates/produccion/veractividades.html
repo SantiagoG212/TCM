@@ -1,0 +1,178 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/plantilla_admin.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <title>TCM</title>
+    <link rel="shortcut icon" href="{% static 'image/logo1.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/inicio.css' %}">
+    <link rel="stylesheet" href="{% static 'css/produccion/veractividades.css' %}">
+</head>
+<body>
+        <style>
+            body{
+                background-image: url("{% static 'image/fondo1.png' %}");
+            }
+        </style>
+        <nav class="nav">
+            <div class="logo">
+                <img src="{% static 'image/logo1.png' %}" alt="" width="80px">
+            </div>
+            <div class="titulo">
+                <p><a href="{% url 'empleado' %}">TCM</a></p>
+            </div>
+        </nav>
+        <div style="height: 150px; overflow: hidden;" ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M-1.41,31.09 C202.31,56.75 329.85,-38.95 500.00,49.98 L500.00,0.00 L0.00,0.00 Z" style="stroke: none; fill: #000000;"></path></svg></div>
+        <style>
+            /* Estilos para las tablas de actividades */
+            .activity-table {
+                border-collapse: collapse;
+                width: 60%; /* Ajusta el ancho según tus preferencias */
+                margin: 10px 0;
+            }
+        
+            .activity-table th {
+                background-color: #000;
+                color: #fff;
+                padding: 10px;
+                text-align: left;
+                border-radius: 8px 8px 0 0;
+            }
+        
+            .activity-table td, .activity-table th {
+                border: 1px solid #ddd;
+                padding: 8px;
+                border-radius: 8px;
+            }
+        
+            .activity-details {
+                margin-left: 10px; /* Mueve la tabla más a la izquierda */
+            }
+        
+            /* Estilos para el formulario */
+            form {
+                margin-top: 10px;
+                margin-bottom: 10px; /* Nuevo margen inferior */
+                display: flex;
+                align-items: center;
+            }
+        
+            label {
+                display: block;
+                margin-right: 10px; /* Espacio entre la casilla y el texto */
+            }
+        
+            input[type="checkbox"] {
+                margin-right: 5px;
+            }
+        
+            .save-button {
+                padding: 8px;
+                background-color: #000;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+        
+            /* Nuevos estilos */
+            .title {
+                font-weight: bold;
+                margin-left: 10px; /* Mueve el título a la izquierda */
+                margin-top: -20px;
+            }
+        
+            .total-production {
+                position: absolute;
+                top: 170px;
+                right: 100px; /* Ajusta el margen derecho según tus preferencias */
+                font-size: 18px;
+                background-color: #333;
+                color: #fff;
+                padding: 10px;
+                border-radius: 8px;
+            }
+        </style>
+    {% if grupo == 'Empleados' or user.is_staff %}
+        <!-- Título de Actividades Pendientes -->
+        <h2 class="title">Actividades Pendientes:</h2>
+        
+        {% for activity in activities %}
+            <table class="activity-table">
+                <thead>
+                    <tr>
+                        <th colspan="2">
+                            <span style="color: #fff;">Fecha: {{ activity.date }}</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="activity-details"><strong>Pago:</strong> {{ activity.pay }}</td>
+                        <td class="activity-details"><strong>Descripción:</strong> {{ activity.description }}</td>
+                    </tr>
+                    <tr>
+                        <td class="activity-details"><strong>Repeticiones:</strong> {{ activity.repetitions }}</td>
+                        <td class="activity-details"><strong>Tiempo estimado:</strong> {{ activity.estimated_time }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <strong>Procesos:</strong>
+                            <ul>
+                                {% for process in activity.activities_process.all %}
+                                    <li class="activity-details">
+                                        <strong>Nombre:</strong> {{ process.name }}<br>
+                                        <strong>Descripción:</strong> {{ process.description }}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        
+            <form method="post" action="{% url 'veractividades' %}">
+                {% csrf_token %}
+                <label for="completed_checkbox">Completada:</label>
+                <input type="checkbox" name="completed" id="completed_checkbox" {% if activity.completed %}checked{% endif %}>
+        
+                <!-- Agrega un campo oculto para almacenar el ID de la actividad -->
+                <input type="hidden" name="activity_id" value="{{ activity.id }}">
+        
+                <button type="submit" class="save-button">Guardar</button>
+            </form>
+        {% endfor %}
+        
+        <!-- Total de Producción Acumulado después del bucle -->
+        <div class="total-production">Total de Producción Actual: {{ total_production_daily }}</div>
+    {% else %}
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+            <div class="col-md-6 text-center">
+                <h3>Bienvenido</h3>
+                <p>Por favor, inicia sesión como empleado.</p>
+                <a href="{% url 'login' %}" class="btn btn-primary">Ir al Inicio de Sesión</a>
+            </div>
+            </div>
+        </div>
+    {% endif %}
+    <div class="wavy" style="height: 150px; overflow: hidden;" ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M-0.27,93.27 C143.62,233.39 358.07,35.05 504.79,98.20 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: #000000;"></path></svg></div>
+    <div class="footer">
+        <div class="copy">
+        <p>Derechos reservados 2023-2024 &copy;</p>
+        </div>
+        <div class="contacto">
+            <h2>¿Deseas comunicarte con nosotros?, ¡Contactanos!</h2>
+            <div class="contactos">
+                <p>Direccion: KR 104 A BIS NO 61 A SUR - 49</p>
+                <p>Telefono: 315 - 296 - 0105</p>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>

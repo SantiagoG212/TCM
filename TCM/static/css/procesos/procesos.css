@@ -1,0 +1,58 @@
+.tabla2 td{
+    justify-content: center;
+}
+.tabla table, .tabla2 table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabla th, .tabla td, .tabla2 th, .tabla2 td{
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+.tabla th, .tabla th{
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+.tabla tr:hover, .tabla2 tr:hover{
+    background-color: #c5c5c5;
+    border-color: black;
+    font-weight: bolder;
+}
+
+.tabla tr td:first-child, .tabla2 tr td{
+    align-items: center;
+    color: #000000;
+    font-weight: 500;
+}
+.tabla2{
+    overflow-x: auto;
+    max-width: 100%;
+    margin-top: 20px;
+}
+h2.borde2{
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 45px;
+    color: black;
+    font-weight: bold;
+}
+
+#procesos2{
+    background-color:#f0d792;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    margin: 20px auto;
+}
+#edit, #eliminar{
+    width: 100px;
+}
+#paginator{
+    background-color: #c5c5c500;
+}

@@ -1,0 +1,10 @@
+{% extends 'pqrstcm.html' %}
+
+{% block main %}
+    {% for post in posts %}
+        <div class="comment">
+            <p>Usuario: {{ post.usuario.username }}</p>
+            <p>{{ post.texto }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}

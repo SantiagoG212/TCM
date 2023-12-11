@@ -1,0 +1,141 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/plantilla_admin.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <title>Registrarse</title>
+    <link rel="shortcut icon" href="{% static 'img/logo1.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/register/registro.css' %}">
+    <script src="{% static 'js/register.js' %}"></script>
+    <style>
+        body {
+            background-image: url("{% static 'image/fondo1.png' %}");
+        }
+
+        .titulo {
+            position: absolute;
+            top: 15px; 
+            left: 105px;
+            z-index: 9999;
+        }
+
+        .titulo a {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-size: 35px;
+            color: #ffffff;
+            text-decoration: none; 
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="logo">
+            <img src="{% static 'image/logo1.png' %}" alt="" width="80px">
+        </div>
+        <div class="titulo">
+            <a href="{% url 'index' %}" class="titulo-link">TCM</a>
+        </div>
+    </nav>
+
+    <div style="height: 180px; overflow: hidden;">
+        <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M-1.41,31.09 C202.31,56.75 329.85,-38.95 500.00,49.98 L500.00,0.00 L0.00,0.00 Z" style="stroke: none; fill: #000000;"></path></svg>
+    </div>
+
+    <div class="container">
+        <div class="item">
+            <div class="text-item">
+                <h2>¡Bienvenido! <br><span>
+                    Regístrate para acceder a nuestros catálogos
+                </span></h2>
+                <p>Gracias a ti, estamos creciendo más allá de nuestras expectativas. 
+                    Compartamos el éxito cada día.</p>
+                <div class="social-icon">
+                    <a href="#"><i class='bx bxl-facebook'></i></a>
+                    <a href="#"><i class='bx bxl-twitter'></i></a>
+                    <a href="#"><i class='bx bxl-instagram'></i></a>
+                    <a href="#"><i class='bx bxl-tiktok'></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="login-section">
+            <div class="form-box register" style="margin-top: 120px" >
+                <form method="POST">
+                    {% csrf_token %}
+                    <h2>¡Regístrate!</h2>
+
+                    <div class="input-box">
+                        <span class="icon"><i class='bx bxs-user-account'></i></span>
+                        <input type="text" name="username" required>
+                        <label>Usuario</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"><i class='bx bxs-user'></i></span>
+                        <input type="text" required name="first_name">
+                        <label >Nombre</label>
+                    </div>
+                    <div class="input-box">
+                            <span class="icon"><i class='bx bxs-user-account'></i></span>
+                            <input type="text" required name="last_name">
+                            <label>Apellido</label>
+                        </div>
+                        <div class="input-box">
+                            <span class="icon"><i class='bx bx-mail-send' ></i></span>
+                            <input type="text" required name="email">
+                            <label>Correo electrónico</label>
+                        </div>
+    
+                        <div class="input-box">
+                            <span class="icon"><i class='bx bxs-lock-alt' ></i></span>
+                            <input type="password" required name="password1">
+                            <label>Contraseña</label>
+                        <div class="input-box">
+                                <span class="icon"><i class='bx bxs-lock-alt' ></i></span>
+                                <input type="password" required name="password2">
+                                <label>Confirmar Contraseña</label>
+                        </div>
+    
+                    <button class="btn">Regístrate</button>
+                    <div class="create-account">
+                        <p>¿Ya tienes una cuenta? <a href="{% url 'login' %}" class="login-link">Iniciar Sesión</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    
+</body>
+{% if messages %}
+{% for message in messages %}
+    <div class="alert alert-danger">
+        {{ message }}
+    </div>
+{% endfor %}
+{% endif %}
+
+<div class="wavy" style="height: 150px; overflow: hidden; margin-top: 520px; margin-left: -98px; margin-right: -97px;">
+    <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;">
+        <path d="M-0.27,93.27 C143.62,233.39 358.07,35.05 504.79,98.20 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: #000000;"></path>
+    </svg>
+</div>
+
+<div class="footer" style="margin-left: -98px; margin-right: -97px;">
+    <div class="copy">
+        <p>Derechos reservados 2023-2024 &copy;</p>
+    </div>
+    <div class="contacto">
+        <h2>¿Deseas comunicarte con nosotros?, ¡Contáctanos!</h2>
+        <div class="contactos">
+            <p>Dirección: KR 104 A BIS NO 61 A SUR - 49</p>
+            <p>Teléfono: 315 - 296 - 0105</p>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</html>
+    

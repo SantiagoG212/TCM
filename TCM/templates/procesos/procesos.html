@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/plantilla_admin.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <title>Procesos</title>
+    <link rel="shortcut icon" href="{% static 'img/logo1.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/procesos/procesos.css' %}">
+</head>
+<body>
+    <style>
+        body{
+            background-image: url("{% static 'image/fondo1.png' %}");
+        }
+    </style>
+    <nav class="nav">
+        <div class="logo">
+            <img src="{% static 'image/logo1.png' %}" alt="" width="80px">
+        </div>
+        <div class="titulo">
+            <p><a href="{% url 'index' %}">TCM</a></p>
+        </div>
+    </nav>
+    <div style="height: 150px; overflow: hidden;" ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M-1.41,31.09 C202.31,56.75 329.85,-38.95 500.00,49.98 L500.00,0.00 L0.00,0.00 Z" style="stroke: none; fill: #000000;"></path></svg></div>
+    <div class="container" id="procesos">
+        <h2 class="borde2">Procesos de costura</h2>
+        <div class="tabla2">
+            <table>
+                <tr>
+                    <th>Proceso</th>
+                    <th>Descripción</th>
+                    <th>Valor</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td>aaaa</td>
+                    <td>aaaa</td>
+                    <td>aaaa</td>
+                    <td id="edit"><a href="{% url 'editar_proceso' %}" class="btn btn-primary">Editar</a></td>
+                    <td id="eliminar">
+                        <form action="" method="">
+                            <button class="btn btn-danger">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <a href="{% url 'proceso_nuevo' %}" class="btn btn-dark">Nuevo proceso</a>
+            </div>
+            <div class="col-6" id="paginator">
+                <div class="paginador"></div>
+            </div>
+        </div>
+    </div>
+    <div class="wavy" style="height: 150px; overflow: hidden;" ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M-0.27,93.27 C143.62,233.39 358.07,35.05 504.79,98.20 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: #000000;"></path></svg></div>
+    <div class="footer">
+        <div class="copy">
+        <p>Derechos reservados 2023-2024 &copy;</p>
+        </div>
+        <div class="contacto">
+            <h2>¿Deseas comunicarte con nosotros?, ¡Contáctanos!</h2>
+            <div class="contactos">
+                <p>Dirección: KR 104 A BIS NO 61 A SUR - 49</p>
+                <p>Teléfono: 315 - 296 - 0105</p>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>

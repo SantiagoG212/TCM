@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&family=Teko&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+nav{
+    background-color: black;
+    padding: 15px;
+    overflow: hidden;
+}
+.logo{
+    margin-left: 25px;
+    float: left;
+}
+.titulo p a{
+    font-family: 'Roboto Condensed', sans-serif;
+    color: white;
+    font-size: 35px;
+    text-decoration: none;
+}
+.titulo{
+    float: left;
+    margin-left: 18px;
+    margin-top: 18px;
+}
+.footer{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 35px;
+}
+.footer p{
+    margin-bottom: 15px;
+    display: inline;
+}
+.footer h2{
+    margin-top: 20px;
+    color: white;
+}
+.contacto p{
+    margin-top: 15px;
+}
+.contactos{
+    padding: 20px;
+}
+.contactos p{
+    margin-right: 30px;
+}
+::-webkit-scrollbar{
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #343541;
+}
+  
+::-webkit-scrollbar-thumb {
+    background-color: #878787; 
+    border-radius: 15px;
+}
+

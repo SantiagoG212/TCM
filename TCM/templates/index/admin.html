@@ -1,0 +1,136 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/plantilla_admin.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <title>TCM</title>
+    <link rel="shortcut icon" href="{% static 'img/logo1.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/adm.css' %}">
+    <script src="{% static 'js/admin.js' %}"></script>
+</head>
+<body>
+    <style>
+        body{
+            background-image: url("{% static 'image/fondo1.png' %}");
+        }
+    </style>
+    <nav class="nav">
+        <div class="logo">
+            <img src="{% static 'image/logo1.png' %}" alt="" width="80px">
+        </div>
+        <div class="titulo">
+            <p><a href="{% url 'home' %}">TCM</a></p>
+        </div>
+    {% if user.is_authenticated %}
+        <div class="options">
+            <button  id="gan" onclick="ganancias()">Servicios</button>
+            <button id="pro" onclick="produccion()">Mis Compras</button>
+            <button onclick="servicios()" id="sv">Comentarios</button>
+            {% if user.is_staff %}
+                <a href="{% url 'admin:index' %}">Administracion</a>
+            {% endif %}
+        </div>
+        <div class="logout">
+            <a href="{% url 'logout' %}">Cerrar sesión</a>
+        </div>
+        {% if grupo == 'Empleados' %}
+            <p><a href="">empleados</a></p>
+        {% endif %}
+    {% endif %}
+    </nav>
+    <div style="height: 150px; overflow: hidden;" ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M-1.41,31.09 C202.31,56.75 329.85,-38.95 500.00,49.98 L500.00,0.00 L0.00,0.00 Z" style="stroke: none; fill: #000000;"></path></svg></div>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success text-center">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% if user.is_authenticated %}
+<div class="container" id="inicio">
+    <div class="row">
+        <div class="col-6">
+        <div class="imagen">
+        <img src="{% static 'image/imagen1.png' %}" alt="" width="350px">
+    </div>
+        </div>
+        <div class="col-6">
+        <div class="admin">
+        <h2>¡Hola, {{user.first_name}} {{user.last_name}}!</h2>
+        <br>
+        <p>Bienvenido al aplicativo dispuesto para la gestion del taller "TCM" desde aqui podras visualizar los servicios que puedes adquirir, solicitar tus servicios y visualizar las solicitudes realizadas, si necesitas ayuda para usar nuestro aplicativo <a href="">¡Ingresa aqui!</a></p>
+    </div>
+        </div>
+    </div>
+</div>
+    <div class="container" id="servicios">
+        <div class="row">
+            <div class="col-6">
+                <h2>¡Comentarios!</h2>
+                <br>
+                <p>Aqui podras enviar comentarios, quejas, sugerencias a nuestro equipo administrativo y ellos atenderan tu respuesta con la mayor brevedad posible</p>
+            </div>
+            <div class="col-6">
+                <div class="imagen2">
+                <img src="{% static 'image/imagen4.png' %}" alt="" width="350px">
+    
+        </div>
+    </div>
+        </div>
+        <div class="row3">
+            <a href="{% url 'pqrs' %}" class="btn btn-dark">Visualizar Comentarios</a>
+        </div>
+    </div>
+    <div class="container" id="ganancias">
+        <div class="row">
+            <div class="col-6">
+                <h2>¡Servicios!</h2>
+                <br>
+                <p>Aqui podras visualizar la cantidad se servicios que tenemos disponinble para ti</p>
+                <a href="{% url 'servicios' %}" class="btn btn-dark mt-5">Visualizar Servicios</a>            
+            </div>
+            <div class="col-6">
+                <div class="imagen2">
+                    <img src="{% static 'image/imagen5.png' %}" alt="" width="350px">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container" id="produccion">
+        <div class="row">
+            <div class="col-6">
+                <h2>¡Mis Compras!</h2>
+                <br>
+                <p>Aqui podras visualizar tus solicitudes realizadas y si han sido efectudas o no, da click en el boton "Ver Solicitudes" para visualizar tus solicitudes y su estado</p>
+                <a href="{% url 'solicitudes' %}" class="btn btn-dark mt-5">Ver Solicitudes</a>            
+            </div>
+            <div class="col-6">
+                <div class="imagen2">
+                    <img src="{% static 'image/imagen6.png' %}" alt="" width="350px">
+                </div>
+            </div>
+        </div>
+    </div>
+{% else %}
+    <p>Por favor inicie sesion sapo perro <a href="{% url 'login' %}">Iniciar Sesion</a></p>
+{% endif %}
+    <div class="wavy" style="height: 150px; overflow: hidden;" ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M-0.27,93.27 C143.62,233.39 358.07,35.05 504.79,98.20 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: #000000;"></path></svg></div>
+    <div class="footer">
+        <div class="copy">
+        <p>Derechos reservados 2023-2024 &copy;</p>
+        </div>
+        <div class="contacto">
+            <h2>¿Deseas comunicarte con nosotros?, ¡Contáctanos!</h2>
+            <div class="contactos">
+                <p>Dirección: KR 104 A BIS NO 61 A SUR - 49</p>
+                <p>Teléfono: 315 - 296 - 0105</p>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>
